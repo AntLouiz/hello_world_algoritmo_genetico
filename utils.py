@@ -1,6 +1,10 @@
 import sys
 from random import randint
-from settings import ALPHABET, MASTER_SOLUTION, INITIAL_POPULATION
+from settings import (
+    ALPHABET,
+    MASTER_SOLUTION,
+    INITIAL_POPULATION
+)
 from individual import Individual
 from operator import attrgetter
 

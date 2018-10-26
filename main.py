@@ -1,5 +1,14 @@
-from settings import INITIAL_POPULATION, MASTER_SOLUTION, MAX_ITERATIONS
-from utils import generate_individual, tournament_selection, crossover, mutate_population
+from settings import (
+    INITIAL_POPULATION,
+    MASTER_SOLUTION,
+    MAX_ITERATIONS
+)
+from utils import (
+    generate_individual,
+    tournament_selection,
+    crossover,
+    mutate_population
+)
 
 
 def main():
