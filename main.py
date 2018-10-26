@@ -1,5 +1,14 @@
-from settings import INITIAL_POPULATION, MASTER_SOLUTION, MAX_ITERATIONS
-from utils import generate_individual, tournament_selection, crossover
+from settings import (
+    INITIAL_POPULATION,
+    MASTER_SOLUTION,
+    MAX_ITERATIONS
+)
+from utils import (
+    generate_individual,
+    tournament_selection,
+    crossover,
+    mutate_population
+)
 
 
 def main():
@@ -19,6 +28,8 @@ def main():
         for x, y in new_population:
             population.append(crossover(x, y))
             population.append(crossover(y, x))
+
+        population = mutate_population(population)
 
         generation += 1
 
