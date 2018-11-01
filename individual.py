@@ -9,9 +9,6 @@ class Individual(object):
         self.grade = grade
         self.sons = []
 
-    def copulate(self, patner):
-        pass
-
     @property
     def fitness(self):
         fitness_value = 0
