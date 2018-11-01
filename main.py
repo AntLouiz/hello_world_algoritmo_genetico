@@ -15,13 +15,13 @@ def main():
     population = []
     generation = 1
 
-    while generation < MAX_ITERATIONS:
-        print("Generation: {}".format(generation))
-        for i in range(INITIAL_POPULATION):
-            population.append(
-                generate_individual(len(MASTER_SOLUTION))
-            )
+    for i in range(INITIAL_POPULATION):
+        population.append(
+            generate_individual(len(MASTER_SOLUTION))
+        )
 
+    while generation < MAX_ITERATIONS:
+        print("Generation: {}, Population: {}".format(generation, len(population)))
         new_population = tournament_selection(population)
 
         population = []
