@@ -19,6 +19,13 @@ def generate_individual(max_length):
 
 def tournament_selection(population):
     selected_candidates = []
+    elitism_percentual = 1
+    total_candidates = int((INITIAL_POPULATION * elitism_percentual) / 100)
+
+    for i in range(total_candidates):
+        selected_candidates.append(max(population, key=attrgetter('fitness')))
+
+    population = population[total_candidates:]
 
     for x in population:
         arena = [population[randint(0, len(population) - 1)] for i in range(2)]
@@ -48,7 +55,7 @@ def crossover(first_individual, second_individual):
 
 
 def mutate_population(population):
-    mutate_percentual = 5
+    mutate_percentual = 10
     total_mutations = int((INITIAL_POPULATION * mutate_percentual) / 100)
 
     for i in range(total_mutations):
