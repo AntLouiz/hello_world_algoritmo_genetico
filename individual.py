@@ -37,4 +37,4 @@ class Individual(object):
         self.gene = ''.join(new_gene)
 
     def __repr__(self):
-        return "{} Fitness({})".format(self.gene, self.fitness)
+        return "{} -- Fitness({})".format(self.gene, self.fitness)
