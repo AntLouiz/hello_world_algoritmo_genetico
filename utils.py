@@ -3,7 +3,9 @@ from random import randint
 from settings import (
     ALPHABET,
     MASTER_SOLUTION,
-    INITIAL_POPULATION
+    INITIAL_POPULATION,
+    MUTATION_PERCENTUAL,
+    ELITISM_PERCENTUAL
 )
 from individual import Individual
 from operator import attrgetter
@@ -19,8 +21,7 @@ def generate_individual(max_length):
 
 def tournament_selection(population):
     selected_candidates = []
-    elitism_percentual = 1
-    total_candidates = int((INITIAL_POPULATION * elitism_percentual) / 100)
+    total_candidates = int((INITIAL_POPULATION * ELITISM_PERCENTUAL) / 100)
 
     for i in range(total_candidates):
         selected_candidates.append(max(population, key=attrgetter('fitness')))
@@ -30,9 +31,9 @@ def tournament_selection(population):
     for x in population:
         arena = [population[randint(0, len(population) - 1)] for i in range(2)]
         best = max(arena, key=attrgetter('fitness'))
-        # print(best)
+        print(best)
 
-        if(best.fitness == 11):
+        if(best.fitness == len(MASTER_SOLUTION)):
             print("ENCONTREI A MELHOR SOLUCAO: {}".format(best.gene))
             sys.exit()
 
@@ -55,8 +56,7 @@ def crossover(first_individual, second_individual):
 
 
 def mutate_population(population):
-    mutate_percentual = 10
-    total_mutations = int((INITIAL_POPULATION * mutate_percentual) / 100)
+    total_mutations = int((INITIAL_POPULATION * MUTATION_PERCENTUAL) / 100)
 
     for i in range(total_mutations):
         population[randint(0, len(population) - 1)].mutate()
